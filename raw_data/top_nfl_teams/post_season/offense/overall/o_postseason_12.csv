@@ -1,0 +1,13 @@
+TeamName,PointsPerGame,Score,OffensivePlays,OffensiveYards,OffensiveYardsPerPlay,FirstDowns,ThirdDownConversions,ThirdDownAttempts,ThirdDownPercentage,RedZoneConversions,RedZoneAttempts,RedZonePercentage,Penalties,PenaltyYards,TimeOfPossession,TurnoverDifferential
+Ravens,31,124,271,1641,6.1,85,25,55,45.5,10,14,71.4,24,206,31:38,6
+49ers,34.7,104,186,1420,7.6,73,12,28,42.9,9,15,60,17,143,31:11,1
+Falcons,27,54,127,894,7,51,11,20,55,3,6,50,5,41,32:38,-1
+Patriots,27,54,147,885,6,52,13,28,46.4,5,10,50,9,96,29:45,-2
+Seahawks,26,52,134,871,6.5,50,8,21,38.1,4,11,36.4,10,65,32:34,1
+Texans,23.5,47,152,845,5.6,49,12,32,37.5,3,7,42.9,10,75,35:06,-1
+Packers,27.5,55,123,678,5.5,40,8,26,30.8,5,7,71.4,7,36,27:28,2
+Colts,9,9,87,419,4.8,25,9,20,45,0,3,0,5,37,37:32,0
+Broncos,35,35,87,398,4.6,30,7,16,43.8,3,3,100,10,87,40:6,-2
+Vikings,10,10,62,324,5.2,17,5,14,35.7,0,1,0,4,30,27:2,-3
+Redskins,14,14,54,203,3.8,15,5,11,45.5,2,2,100,3,15,25:40,-1
+Bengals,13,13,48,198,4.1,12,0,9,0,0,1,0,5,51,21:11,0

@@ -1,0 +1,13 @@
+TeamName,OpponentPointsPerGame,OpponentScore,OpponentOffensivePlays,OpponentOffensiveYards,OpponentOffensiveYardsPerPlay,OpponentFirstDowns,OpponentThirdDownConversions,OpponentThirdDownAttempts,OpponentThirdDownPercentage,OpponentRedZoneConversions,OpponentRedZoneAttempts,OpponentRedZonePercentage,OpponentPenalties,OpponentPenaltyYards,OpponentTimeOfPossession,OpponentTurnoverDifferential
+Raiders,27,27,69,291,4.2,19,4,15,26.7,3,3,100,7,65,33:29,3
+Dolphins,30,30,54,367,6.8,19,4,9,44.4,2,3,66.7,6,60,27:58,1
+Lions,26,26,71,387,5.5,24,9,16,56.2,3,4,75,6,40,36:39,0
+Chiefs,18,18,66,389,5.9,20,7,15,46.7,0,4,0,4,53,34:13,1
+Giants,38,38,70,406,5.8,23,5,14,35.7,3,4,75,2,20,34:31,2
+Cowboys,34,34,63,414,6.6,27,6,11,54.5,3,3,100,3,22,29:46,0
+Texans,24,48,136,580,4.3,36,7,30,23.3,5,6,83.3,13,113,27:00,-3
+Seahawks,21,42,119,653,5.5,41,8,23,34.8,4,7,57.1,9,78,28:20,2
+Steelers,19.3,58,182,963,5.3,60,19,40,47.5,6,9,66.7,14,134,30:45,0
+Patriots,20.3,61,179,997,5.6,53,13,39,33.3,5,9,55.6,17,159,28:10,-1
+Falcons,25,75,211,1222,5.8,78,16,35,45.7,8,12,66.7,17,126,31:11,-5
+Packers,29.3,88,195,1287,6.6,70,21,40,52.5,7,12,58.3,13,123,30:47,0
