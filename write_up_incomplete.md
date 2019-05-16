@@ -1,20 +1,42 @@
 <h2>Fantasy Football Draft Recommendations Using Gaussian Mixture Model Clustering & Predicting Player Performance Using Feed-Forward Neural Network Models</h2>
 
-<h2>Problem Statement</h2>
-While many fantasy football hosting websites have succeeded in providing moderately accurate draft recommendations and player performance predictions based on each player's performance history, there is still much room for improvement. I’ve used predetermined player performance predictions in the past to select my draft picks for the fantasy football season, but more often than not, I find myself regretting it. Players are continuously predicted to perform at the same fantasy scoring levels or better based on their individual performance in the past. Often times, even if a player is prone to injury, their predicted performance remains unaffected by the strong possibility that they will miss several games that season. The goal of my analysis is to consider a wider variety of features when recommending players to draft and which round to draft them in. The most notable of these features include season rank, total fantasy points, fantasy points per game, number of games played, and position. If there is a synergistic relationship between features, I want to derive those relationships based on data, then use those relationships to generate helpful recommendations of players to draft in priority order. 
-The primary goal of this analysis is to develop a model that creates a new ranking system for the highest performing players of the 2018 NFL season. This model would allow for the recommendation of high-quality fantasy draft picks to players before the 2019 NFL season. The secondary goal of this analysis is to develop another model that takes estimated player performance data as inputs, then outputs a prediction of that player's performance on a week-to-week basis. This model would serve as a basis for analyzing trends in top player performance in order to predict how that player will perform the in the following week.
+<h2>Introduction & Problem Statement</h2>
+<p>While many fantasy football hosting websites have succeeded in providing moderately accurate draft recommendations and player performance predictions based on each player's performance history, there is still much room for improvement. I’ve used predetermined player performance predictions in the past to select my draft picks for the fantasy football season, but more often than not, I find myself regretting it. Players are continuously predicted to perform at the same fantasy scoring levels or better based on their individual performance in the past. Often times, even if a player is prone to injury, their predicted performance remains unaffected by the strong possibility that they will miss several games that season. The goal of my analysis is to consider a wider variety of features when recommending players to draft and which round to draft them in. The most notable of these features include season rank, total fantasy points, fantasy points per game, number of games played, and position. If there is a synergistic relationship between features, I want to derive those relationships based on data, then use those relationships to generate helpful recommendations of players to draft in priority order. </p>
+<p>The primary goal of this analysis is to develop a model that creates a new ranking system for the highest performing players of the 2018 NFL season. This model would allow for the recommendation of high-quality fantasy draft picks to players before the 2019 NFL season. The secondary goal of this analysis is to develop another model that takes estimated player performance data as inputs, then outputs a prediction of that player's performance on a week-to-week basis. This model would serve as a basis for analyzing trends in top player performance in order to predict how that player will perform the in the following week.</p>
 
 <h2>Data Gathering</h2>
-Data for this analysis was gathered from a popular fantasy sport data distributor, www.fantasydata.com, where I was able to locate all necessary data and download data in CSV format. I gathered data representing the top 300 offensive players in each week of the 2018 regular season, the top overall 300 offensive players per season in 2015-2018, and the top 300 offensive players in each week of the 2015-2017 regular seasons. Using www.fantasydata.com made it easy to gather all of this data due to it's mostly proper formatting and ease of access. 
+<p>Data for this analysis was gathered from a popular fantasy sport data distributor, www.fantasydata.com, where I was able to locate all necessary data and download data in CSV format. I gathered data representing the top 300 offensive players in each week of the 2018 regular season, the top overall 300 offensive players per season in 2015-2018, and the top 300 offensive players in each week of the 2015-2017 regular seasons. Using www.fantasydata.com made it easy to gather all of this data due to it's mostly proper formatting and ease of access.</p> 
 
 <h2>Exploratory Data Analysis (EDA)</h2>
-Initial exploratory analysis involved inspecting the properties of all data in various jupyter notebooks. I chose to use multiple notebooks for organization purposes and clean manipulation of related and unrelated data. After examining the data, new features were added in order to distinguish the multitude of data frames (e.g. season year). Once distinguishing features were added, related data frame objects were concatenated easily with few to no errors. Lastly, I saved my new data frame objects in CSV file format, resulting in access to a condensed set of data to model in separate Jupyter notebooks. 
-In addition to reformatting the raw data into a condensed set of clean data, visualizing the data and examining the data values more closely was an essential aspect of my EDA. In order to visualize the data, I created visual heatmaps to identify unforseen correlations and/or patterns in the condensed data. Closely examining the data values of the condensed set of data involved checking for incorrect formatting, redundant features, and number of values per year, to name a few. This allowed me to further condense my data into only the most necessary features and confirm the absence of unbalanced classes for season year.
+<p>Initial exploratory analysis involved inspecting the properties of all data in various jupyter notebooks. I chose to use multiple notebooks for organization purposes and clean manipulation of related and unrelated data. After examining the data, new features were added in order to distinguish the multitude of data frames (e.g. season year). Once distinguishing features were added, related data frame objects were concatenated easily with few to no errors. Lastly, I saved my new data frame objects in CSV file format, resulting in access to a condensed set of data to model in separate Jupyter notebooks. </p>
+<p>In addition to reformatting the raw data into a condensed set of clean data, visualizing the data and examining the data values more closely was an essential aspect of my EDA. In order to visualize the data, I created visual heatmaps to identify unforseen correlations and/or patterns in the condensed data. Closely examining the data values of the condensed set of data involved checking for incorrect formatting, redundant features, and number of values per year, to name a few. This allowed me to further condense my data into only the most necessary features and confirm the absence of unbalanced classes for season year.</p>
 
 <h2>Data Modeling</h2>
 
+<h4>Gaussian Mixture Model Clustering</h4>
+
+<p>I chose to use the Gaussian Mixture algorithm in order to group players with the best performance stats in 2018 into categories that considered more factors that just player rank. While each player's rank is often a good indication of their performance level, it's usually only measured on the quantity of overall fantasy points a player had in a particular season. Using the Gaussian Mixture Model (GMM), I grouped all players into clusters based on a combination of each player's rank scaled by their average fantasy points scored per week, and each player's rank scaled by their overall fantasy points scored in the 2018 season.</p>
+
+<p> In order to better understand the concept of grouping data into clusters using the Gaussian Mixture algorithm, I've provided visual representations of my GMM cluster results below:
+</p>
+
+<p> As you can see, the 1-dimensional clusters generated by a GMM fit to only one feature provide little to no ituition whatsoever. Each of the 1-dimensional clusters are fit to either player rank, average fantasy points scored per week, or total fantasy points scored in the season. Note that player rank is the only variable used to fit and predict with the GMM model in two of the visuals, with one visual plotted using average fantasy points per game as the y-axis and the other using total fantasy points in the 2018 season as the y-axis. However, the clusters generated by 2-dimensional GMM models provided a much more intuitive grouping of players. The visuals of the 2-dimensional GMM clusters clearly show a more mixed distribution of clusters among players, which allows for more insight to be gathered from not only each of the 2-dimensional GMM clusters generated by either each player's rank scaled by their average fantasy points scored per week or each player's rank scaled by their overall fantasy points scored in the 2018 season, but a combination of both.</p>
+
+<p> Once players were grouped successfully into new tiers, assigned each group to a new data frame to represent each tier. Each tier's data frame also stored each player's name, position, and number of games played. The use of these additional features made it easier to derive insight from the clusters, especially when combined with outside research. Using data frame masking techniques to further group players based on their presence in both the clusters with the highest average weekly fantasy points scored and the highest overall fantasy points scored in the 2018 seasons. Since some players with high performance in either category were not present in both clusters, I also grouped players based on their presence in either category, as long as they were not duplicated between tiers.</p>
+
+<h4>Machine Learning With Feed-Forward Neural Networks</h4>
+
+<p> Using a feed-forward neural network and data representing the top 300 offensive scoring players in each week of the 2018 regular season, I was able to predict an estimate of each player's total fantasy points scored per week based on a multitude of features. These features include the various performance measures of each player (e.g. passing yards, rushing yards, etc.), the player's team, their opposing team, and their weekly rank (1-300). I used the built in Pandas library function, pd.get_dummies(), to one-hot encode each player's team and opposing team. The term, "one-hot encoding", refers to the conversion of categorical values into numerical values that can be used as inputs in a regression model. The next step was to apply a train-test split in order to divide my entire data set into a training subset to train my neural network and a validation subset to evaluate the accuracy of the trained model's predictions on "unseen" data. Then, using the StandardScaler class, I scaled my training and validation data in order to use with the feed-forward neural network model.</p>
+
+<p> The topology of the sequential neural network consisted of a dense input layer with 74 neurons, two dense hidden layers with 74 neurons in the first hidden layer and 37 neurons in the second hidden layer, ending with a dense output layer with 1 output neuron. All layers in the model, excluding the output layer, used the rectified linear unit (ReLU) activation function. The output layer explicitly declare an activation function since the output of a feed-forward neural network used for regression does not require a specified activation function in the output layer. The single output neuron produced a one prediction of each player's fantasy points scored that week based on all 74 original inputs.  
+</p>
+
+<p> Once the topology of the neural network was in place, the model was compiled using mean squared error as the loss function, the Adam optimization function, and mean absolute error as the evaluation metric. After compiling the model, the training data was run through the model as 150 iterations (epochs) of the full training set with a batch size of 256 training data values ran in approximately 9 subiterations per epoch iteration. A visual of the mean squared error between the training data and validation data can be seen below:
+</p>
 
 
+<p> The final step in evaluation of the neural network's predictive power involved numerically measuring the difference in root mean squared error between the training dataset and the validation dataset. The optimized root mean squared error of the validation dataset was approximately 0.46 points of error per player. This means that the neural network model incorrectly predicts each player's performance by 0.46 points on average, which is pretty low. The optimized root mean squared error of the training dataset was approximately 0.14 points of error per player, which suggested the model was suffering from being overfit to the data. 
+</p>
 
 <h2>NFL Fantasy Football Draft Tiers Based on 2018 Season Performance</h2>
 
@@ -64,7 +86,23 @@ In addition to reformatting the raw data into a condensed set of clean data, vis
 
 
 <h2>Recommendations & Conclusions</h2>
+<p>The final groupings of players allowed for clear representation of players in each of the final tiers and led to some very interesting conclusions. 
+</p>
 
+<p>
+</p>
+
+<p>
+</p>
 
 
 <h2>Next Steps</h2>
+
+<p>
+</p>
+
+<p>
+</p>
+
+<p>
+</p>
