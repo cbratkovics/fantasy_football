@@ -13,7 +13,7 @@
 
 <h2>Data Modeling</h2>
 
-<h4>Predicting Player Performance - Feed-Forward Neural Network</h4>
+<h3>Predicting Player Performance - Feed-Forward Neural Network</h3>
 
 <p> Using a feed-forward neural network and data representing the top 300 offensive scoring players in each week of the 2018 regular season, I was able to predict an estimate of each player's total fantasy points scored per week based on a multitude of features. These features include the various performance measures of each player (e.g. passing yards, rushing yards, etc.), the player's team, their opposing team, and their weekly rank (1-300). I used the built in Pandas library function, pd.get_dummies(), to one-hot encode each player's team and opposing team. The term, "one-hot encoding", refers to the conversion of categorical values into numerical values that can be used as inputs in a regression model. The next step was to apply a train-test split in order to divide my entire data set into a training subset to train my neural network and a validation (testing) subset to evaluate the accuracy of the trained model's predictions on "unseen" data. Then, using the StandardScaler class, I scaled my training and validation data in order to use with the feed-forward neural network model.</p>
 
@@ -23,13 +23,11 @@
 <p> Once the topology of the neural network was in place, the model was compiled using mean squared error as the loss function, the Adam optimization function, and mean absolute error as the evaluation metric. After compiling the model, the training data was run through the model as 150 iterations (epochs) of the full training set with a batch size of 256 training data values ran in approximately 9 subiterations per epoch iteration. A visual of the mean squared error between the training data and validation (testing) data can be seen below:
 </p>
 
-<h5>Feed-Forward Neural Network Training Loss vs. Testing Loss</h5>
-
 <img src="/images/FFNN_fantasy_training_vs_testing_loss_function_2018.png" 
     alt="Feed-Forward Neural Network Training Loss vs. Testing Loss" 
     style="float: left; margin-right: 15px;" />
 
-<p> The final step in evaluation of the neural network's predictive power involved numerically measuring the difference in root mean squared error between the training dataset and the validation dataset. The optimized root mean squared error of the validation dataset was approximately 0.46 points of error per player. This means that the neural network model incorrectly predicts each player's performance by 0.46 points on average, which is pretty low. The optimized root mean squared error of the training dataset was approximately 0.14 points of error per player, which suggested the model was suffering from being overfit to the data. 
+<p> The final step in evaluation of the neural network's predictive power involved numerically measuring the difference in root mean squared error between the training dataset and the validation dataset. The optimized root mean squared error of the validation dataset was approximately 0.45 points of error per player. This means that the neural network model incorrectly predicts each player's performance by 0.46 points on average, which is pretty low. The optimized root mean squared error of the training dataset was approximately 0.14 points of error per player, which suggested the model was suffering from being overfit to the data. The model's overfitting to the data indicates that the model should be made more complex and regularization should be tested and potentially applied. 
 </p>
 
 <h4>Custom Grouping of Draft Picks - Gaussian Mixture Model Clustering</h4>
@@ -39,13 +37,13 @@
 <p> In order to better understand the concept of grouping data into clusters using the Gaussian Mixture algorithm, I've provided visual representations of my GMM cluster results below:
 </p>
 
-<h5>Average Fantasy Points Scored Per Game Gaussian Mixture Model Cluster Plots</h5>
+<h3>Average Fantasy Points Scored Per Game Gaussian Mixture Model Cluster Plots</h3>
 
 <img src="/images/gmm_1D_cluster_Rank1D_cluster_FantasyPointsPerGame_2d_clustering_[2018].png" 
     alt="Season FP Scored GMM Clusters" 
     style="float: left; margin-right: 15px;" />
 
-<h5>Overall Fantasy Points Scored Gaussian Mixture Model Cluster Plots</h5>
+<h3>Overall Fantasy Points Scored Gaussian Mixture Model Cluster Plots</h3>
 
 <img src="/images/gmm_1D_cluster_Rank1D_cluster_FantasyPoints_2d_clustering_[2018].png" 
     alt="Weekly FP Scored GMM Clusters" 
@@ -135,23 +133,21 @@
 
 
 <h2>Recommendations & Conclusions</h2>
-<p>The final groupings of players allowed for clear representation of players in each of the final tiers and led to some very interesting conclusions. 
-</p>
 
-<p>
-</p>
+<p>For those who are unfamiliar with typical fantasy football drafting, the first, second, and third draft picks are typically used to draft the best available running backs and the  fourth, fifth, and sixth draft picks are typically used to draft the best available receivers. Quarterbacks are typically drafted in the seventh and/or eighth rounds, followed by additional running back and receiver draft picks to add depth to your fantasy team. It's important to add depth because every team has one BYE week, where the team gets a week of rest at any given week during the season. </p>
 
-<p>
-</p>
+<p>Contrary to this typical drafting convention, the stand-out player of the 2018 season is Patrick Mahomes, who I recommend you should draft in the second, third, or fourth round if he's available. Mahomes was by far the top overall and weekly scoring fantasy player in 2018. Not only does his performance provide high scoring output, but the fact that he participated in every game last season shows he is not prone to injury. Many players are inconsistent performers throughout the fantasy season because of their likelihood to get injured and miss games. An additional source of bias in player performance is their inconsistent performance on a game to game basis. A key example of this inconsistency is Ryan Fitzpatrick, who played only eight games in 2018, but managed to score an average of 20.7 points per game. High scoring players who participate inconsistently on a weekly basis may add temporary and/or trade value to your team, but you ultimately could get stuck with a great player for the first half of the season who doesn't perform well in key games, such as the fantasy playoffs.</p>
+
+<p>The final groupings of players allowed for clear representation of players in each of the final tiers and led to some very interesting conclusions. The tiers are the resulting groups from the Gaussian Mixture Model clusters ordered by a combination average fantasy points scored per week and overall fantasy points scored per season by each player in each cluster. By examining the tables above, a clear division is represented amongst NFL players who's 2018 season performance was consistently high scoring, inconsistently high scoring, consistently average scoring, inconsistently average scoring, and low scoring. Being able to identify these divisions and use them in your fantasy draft will prove to be essential when deciding which players to draft in each sequential round.</p>
+
+<p> While the feed-forward neural network model is a fairly accurate predictor of weekly player performance, it doesn't provide much value when deciding which players to draft in the 2019 fantasy season. In my opinion, the most interesting aspect of the model's findings lies within its deep learning characteristics. A programmed data model was able to learn the scoring convention of each player in all offensive positions in less than a minute, which is an unbeleivable display of the power of machine learning. On average, the neural network's prediction error per player was only 0.45 points on average! While the model's value is not immediately useful, it has great promise for the upcoming 2019 season once the player scoring stats are in from the first week of 2019. </p>
 
 
 <h2>Next Steps</h2>
 
-<p>
+<p> I plan to test these findings for my fantasy football draft in the upcoming 2019 season. Once the 2019 NFL season starts, whether or not my GMM cluster hold true value will become clear within the first few weeks. In order to further enhance my clusters in the near future, creating new tiers based on player position will enhance the clarity of insight gathered for ideal draft picks. 
 </p>
 
-<p>
+<p>An improvement in the immediate future for the feed-forward neural network model is to apply the concept of transfer learning, which refers to the transfer of data processed by an unsupervised machine learning model into a supervised machine learning model. In the future, I plan to further improve and test the current neural network model once the first week of fantasy football performance stats are released. Once the stats of the first week of the 2019 season are finalized, the goal will be to adjust my current feed-forward neural network model to predict performance estimates in the following weeks of the season for each player. Ideally, the power of this adjusted model will increase as more weekly stats are made public and used to train the model to more accurately predict player performance in the later weeks of the 2019 season.
 </p>
 
-<p>
-</p>
