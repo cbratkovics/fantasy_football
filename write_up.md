@@ -23,7 +23,7 @@
 <p> Once the topology of the neural network was in place, the model was compiled using mean squared error as the loss function, the Adam optimization function, and mean absolute error as the evaluation metric. After compiling the model, the training data was run through the model as 150 iterations (epochs) of the full training set with a batch size of 256 training data values ran in approximately 9 subiterations per epoch iteration. A visual of the mean squared error between the training data and validation (testing) data can be seen below:
 </p>
 
-<img src="/images/FFNN_fantasy_training_vs_testing_loss_function_2018.png" 
+<img src="./images/FFNN_fantasy_training_vs_testing_loss_function_2018.png" 
     alt="Feed-Forward Neural Network Training Loss vs. Testing Loss" 
     style="float: left; margin-right: 15px;" />
 
@@ -39,13 +39,13 @@
 
 <h3>Average Fantasy Points Scored Per Game Gaussian Mixture Model Cluster Plots</h3>
 
-<img src="/images/gmm_1D_cluster_Rank1D_cluster_FantasyPointsPerGame_2d_clustering_[2018].png" 
+<img src="./images/gmm_1D_cluster_Rank1D_cluster_FantasyPoints_2d_clustering_[2018].png" 
     alt="Season FP Scored GMM Clusters" 
     style="float: left; margin-right: 15px;" />
 
 <h3>Overall Fantasy Points Scored Gaussian Mixture Model Cluster Plots</h3>
 
-<img src="/images/gmm_1D_cluster_Rank1D_cluster_FantasyPoints_2d_clustering_[2018].png" 
+<img src="./images/gmm_1D_cluster_Rank1D_cluster_FantasyPointsPerGame_2d_clustering_[2018].png" 
     alt="Weekly FP Scored GMM Clusters" 
     style="float: left; margin-right: 15px;" />
 
