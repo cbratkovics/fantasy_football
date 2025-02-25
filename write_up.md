@@ -39,13 +39,13 @@
 
 <h3>Average Fantasy Points Scored Per Game Gaussian Mixture Model Cluster Plots</h3>
 
-<img src="images/gmm_1D_cluster_Rank1D_cluster_FantasyPointsPerGame_2d_clustering_[2018].png" 
+<img src="./images/gmm_1D_cluster_Rank1D_cluster_FantasyPointsPerGame_2d_clustering_[2018].png" 
     alt="Season FP Scored GMM Clusters" 
     style="float: left; margin-right: 15px;" />
 
 <h3>Overall Fantasy Points Scored Gaussian Mixture Model Cluster Plots</h3>
 
-<img src="images/gmm_1D_cluster_Rank1D_cluster_FantasyPoints_2d_clustering_[2018].png" 
+<img src="./images/gmm_1D_cluster_Rank1D_cluster_FantasyPoints_2d_clustering_[2018].png" 
     alt="Weekly FP Scored GMM Clusters" 
     style="float: left; margin-right: 15px;" />
 
